@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import {EditorState, Modifier, Entity, SelectionState, getVisibleSelectionRect} from 'draft-js'
+import {EditorState, Modifier, SelectionState, getVisibleSelectionRect} from 'draft-js'
 import Autocomplete from './Autocomplete'
 
 export function getSelectionCoords (editor, toolbarHeight = 34, maxOffsetLeft = 250) {
@@ -54,9 +54,16 @@ export default class extends Component {
     let selectionState = editorState.getSelection()
     let contentState = editorState.getCurrentContent()
     let block = contentState.getBlockForKey(selectionState.getStartKey())
-
     let start = selectionState.getEndOffset() - (mentionSearchValue.length + 1)
     let end = selectionState.getEndOffset()
+
+    const contentStateWithEntity = contentState.createEntity('MENTION', 'IMMUTABLE', {
+      url: user.link,
+      avatar: user.avatar,
+      name: user.name,
+      className: 'ld-mention'
+    })
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
 
     const targetRange = new SelectionState({
       anchorKey: block.getKey(),
@@ -70,12 +77,7 @@ export default class extends Component {
       targetRange,
       user.name,
       editorState.getCurrentInlineStyle(),
-      Entity.create('MENTION', 'IMMUTABLE', {
-        url: user.link,
-        avatar: user.avatar,
-        name: user.name,
-        className: 'ld-mention'
-      })
+      entityKey
     )
     onChange(EditorState.push(editorState, updatedState, 'insert-characters'))
     this.props.closeMentionList()
