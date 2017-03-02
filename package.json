@@ -1,6 +1,6 @@
 {
   "name": "ld-mention",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Last Draft mention plugin",
   "main": "lib/mention/plugin.js",
   "scripts": {
