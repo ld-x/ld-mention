@@ -82,9 +82,9 @@ export default class extends Component {
   }
 
   render() {
-    const {searchValue} = this.props
-    let menuStyle = { border: '1px solid #b7b7b7' }
-    if (searchValue.length < 1) { menuStyle = { border: 'none' } }
+    const {foundUsers} = this.state
+    let menuStyle = { border: 'none' }
+    if (foundUsers.length) { menuStyle = { border: '1px solid #b7b7b7' } }
 
     return (
       <Search>
