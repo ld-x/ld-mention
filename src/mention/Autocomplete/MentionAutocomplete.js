@@ -119,7 +119,7 @@ export default class extends Component {
     }
 
     return (
-      <MentionListWrapper style={menuStyle} className='ld-mention-list-wrapper'>
+      <MentionListWrapper style={menuStyle} className='ld-mention-wrapper'>
         <div style={{position: 'absolute', bottom: '0'}}>
           <MentionList className='ld-mention-list'>
             {

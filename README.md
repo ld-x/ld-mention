@@ -69,3 +69,23 @@ const mentionUsersAsync = function (searchValue, cb) {
   )
 }
 ```
+
+## Styles
+
+Last Draft plugins use styled-components 💅 for the base styling.
+
+## Custom Styles with CSS
+
+You can also add custom css to override the base styling with the following class names specified below:
+
+```css
+.ld-mention-wrapper {}
+.ld-mention {}
+.ld-mention-list {}
+.ld-mention-autocomplete {}
+.ld-mention-menu {}
+.ld-mention-menu-list {}
+.ld-mention-item {}
+.ld-mention-avatar {}
+.ld-mention-name {}
+```

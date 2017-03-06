@@ -70,9 +70,9 @@ export default class extends Component {
       let avatarSrc = item.avatar
       return (
         <li key={i}>
-          <MentionItem>
-            <Avatar src={avatarSrc} />
-            <MentionName key={name} onClick={() => this.selectAutoComplete(item)}>
+          <MentionItem className='ld-mention-item'>
+            <Avatar className='ld-mention-avatar' src={avatarSrc} />
+            <MentionName className='ld-mention-name' key={name} onClick={() => this.selectAutoComplete(item)}>
               {name}
             </MentionName>
           </MentionItem>
@@ -87,9 +87,9 @@ export default class extends Component {
     if (foundUsers.length) { menuStyle = { border: '1px solid #b7b7b7' } }
 
     return (
-      <Search>
-        <Menu style={menuStyle}>
-          <List>{this.renderUsers()}</List>
+      <Search className='ld-mention-autocomplete'>
+        <Menu style={menuStyle} className='ld-mention-menu'>
+          <List className='ld-mention-menu-list'>{this.renderUsers()}</List>
         </Menu>
       </Search>
     )
