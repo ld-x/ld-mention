@@ -32,9 +32,12 @@ export default class extends Component {
     this.findUsers()
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
     if (prevProps.searchValue !== this.props.searchValue) {
-      this.findUsers()
+      clearTimeout(this.handleUpdateTimeout)
+      this.handleUpdateTimeout = setTimeout(() => {
+        this.findUsers()
+      }, 300)
     }
   }
 
